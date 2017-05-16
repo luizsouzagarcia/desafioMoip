@@ -1,6 +1,6 @@
 # desafioMoip - Luiz Felipe Garcia
 
-1 - Clone o endereço <b>https://github.com/luizsouzagarcia/desafioMoip.git</b> para algum diretório de sua preferêcia.<br>
+1 - Realize o download do zip do projeto ou clone o endereço <b>https://github.com/luizsouzagarcia/desafioMoip.git</b> para algum diretório de sua preferêcia.<br>
 2 - Tenha certeza que o <b>Java</b> e o <b>Maven</b> estejam instalados.<br>
 3 - Acesse o diretório <b>desafioMoip/moip</b> pelo command prompt(Windows) ou terminal(OSX).<br>
 4 - No diretório <b>moip</b> execute o comando <b>mvn clean install</b>. <br>
