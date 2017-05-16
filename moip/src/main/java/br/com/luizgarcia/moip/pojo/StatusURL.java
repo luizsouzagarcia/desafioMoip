@@ -9,7 +9,7 @@ public class StatusURL {
 
 	private String urlResponseCode;
 
-	private int qtdResponseCode;
+	private Long qtdResponseCode;
 
 	/**
 	 * @return the urlResponseCode
@@ -28,15 +28,15 @@ public class StatusURL {
 	/**
 	 * @return the qtdResponseCode
 	 */
-	public int getQtdResponseCode() {
+	public Long getQtdResponseCode() {
 		return qtdResponseCode;
 	}
 
 	/**
-	 * @param qtdResponseCode the qtdResponseCode to set
+	 * @param long1 the qtdResponseCode to set
 	 */
-	public void setQtdResponseCode(int qtdResponseCode) {
-		this.qtdResponseCode = qtdResponseCode;
+	public void setQtdResponseCode(Long long1) {
+		this.qtdResponseCode = long1;
 	}
 
 }
