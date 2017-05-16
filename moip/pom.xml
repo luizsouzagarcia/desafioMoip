@@ -5,7 +5,7 @@
 	<groupId>br.com.luizgarcia</groupId>
 	<artifactId>moip</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>moip</name>
 	<description>Desafio para vaga de desenvolvedor no Moip</description>
@@ -24,6 +24,13 @@
 	</properties>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160810</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -44,12 +51,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.8.0</version>
 		</dependency>
+
 
 	</dependencies>
 	<build>
@@ -65,6 +73,8 @@
 				<configuration>
 					<imageName>desafio-moip</imageName>
 					<baseImage>openjdk</baseImage>
+					<executable>true</executable>
+					<mainClass>cbr.com.luizgarcia.moip.App</mainClass>
 					<entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
 					<resources>
 						<resource>

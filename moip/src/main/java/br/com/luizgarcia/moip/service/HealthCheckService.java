@@ -1,6 +1,7 @@
 package br.com.luizgarcia.moip.service;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 
 import br.com.luizgarcia.moip.pojo.ResponseHealthCheck;
@@ -12,19 +13,22 @@ public interface HealthCheckService {
 	/**
 	 * @return método que retorno as urls e suas quantidades.
 	 * @throws IOException 
+	 * @throws URISyntaxException 
 	 */
-	public ResponseHealthCheck getHealthCheck() throws IOException;
+	public ResponseHealthCheck getHealthCheck() throws IOException, URISyntaxException;
 	
 	/**
 	 * @return
 	 * @throws IOException
+	 * @throws URISyntaxException 
 	 */
-	public List<StatusURL> getHttpStatusOcurrs() throws IOException;
+	public List<StatusURL> getHttpStatusOcurrs() throws IOException, URISyntaxException;
 	
 	/**
 	 * @return
 	 * @throws IOException
+	 * @throws URISyntaxException 
 	 */
-	public List<WebhooksURL> getRequestToOcurrs() throws IOException;
+	public List<WebhooksURL> getRequestToOcurrs() throws IOException, URISyntaxException;
 	
 }

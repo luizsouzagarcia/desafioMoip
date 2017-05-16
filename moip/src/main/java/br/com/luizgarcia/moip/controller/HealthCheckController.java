@@ -1,6 +1,7 @@
 package br.com.luizgarcia.moip.controller;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +25,11 @@ public class HealthCheckController {
     /**
      * @return 
      * @throws IOException 
+     * @throws URISyntaxException 
      * @throws JSONException 
      */
     @RequestMapping(value = "/healthcheck/", method = RequestMethod.GET)
-    public @ResponseBody String getHealthCheck() throws IOException {
+    public @ResponseBody String getHealthCheck() throws IOException, URISyntaxException {
         ResponseHealthCheck responseHealthCheck = healthCheckServiceImpl.getHealthCheck();
         String json = new Gson().toJson(responseHealthCheck);
         return json;
