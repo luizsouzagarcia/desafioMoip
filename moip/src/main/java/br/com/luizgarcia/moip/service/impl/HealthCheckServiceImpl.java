@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -22,42 +23,50 @@ import br.com.luizgarcia.moip.service.HealthCheckService;
 @Component
 public class HealthCheckServiceImpl implements HealthCheckService {
 
-	/**
-	 * @return
-	 * @throws IOException
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * br.com.luizgarcia.moip.service.HealthCheckService#getHttpStatusOcurrs()
 	 */
-	public List<StatusURL> getHttpStatusOcurrs() throws IOException{
+	public List<StatusURL> getHttpStatusOcurrs() throws IOException {
 		List<String> list = getHttpStatus();
 		List<StatusURL> listStatusURL = new ArrayList<StatusURL>();
-		Map<String, Long> counts =
-			    list.stream().collect(Collectors.groupingBy(e -> e, Collectors.counting()));
-		for(Entry<String, Long> entry : counts.entrySet()) {
-			StatusURL statusURL = new StatusURL();
-			statusURL.setUrlResponseCode(entry.getKey());
-			statusURL.setQtdResponseCode(entry.getValue());
-			listStatusURL.add(statusURL);
+		Map<String, Long> counts = list.stream().collect(Collectors.groupingBy(e -> e, Collectors.counting()));
+		for (Entry<String, Long> entry : counts.entrySet()) {
+			if (entry.getKey() != "") {
+				StatusURL statusURL = new StatusURL();
+				statusURL.setUrlResponseCode(entry.getKey());
+				statusURL.setQtdResponseCode(entry.getValue());
+				listStatusURL.add(statusURL);
+			}
 		}
+		Collections.sort(listStatusURL, new StatusURL());
 		return listStatusURL;
 	}
-	
-	/**
-	 * @return
-	 * @throws IOException
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * br.com.luizgarcia.moip.service.HealthCheckService#getRequestToOcurrs()
 	 */
-	public List<WebhooksURL> getRequestToOcurrs() throws IOException{
+	public List<WebhooksURL> getRequestToOcurrs() throws IOException {
 		List<String> list = getRequestTo();
 		List<WebhooksURL> listWebhooksURL = new ArrayList<WebhooksURL>();
-		Map<String, Long> counts =
-			    list.stream().collect(Collectors.groupingBy(e -> e, Collectors.counting()));
-		for(Entry<String, Long> entry : counts.entrySet()) {
-			WebhooksURL url = new WebhooksURL();
-			url.setRequestUrl(entry.getKey());
-			url.setQtdRequestUrl(entry.getValue());
-			listWebhooksURL.add(url);
+		Map<String, Long> counts = list.stream().collect(Collectors.groupingBy(e -> e, Collectors.counting()));
+		for (Entry<String, Long> entry : counts.entrySet()) {
+			if (entry.getKey() != "") {
+				WebhooksURL url = new WebhooksURL();
+				url.setRequestUrl(entry.getKey());
+				url.setQtdRequestUrl(entry.getValue());
+				listWebhooksURL.add(url);
+			}
 		}
+		Collections.sort(listWebhooksURL, new WebhooksURL());
 		return listWebhooksURL;
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -93,7 +102,7 @@ public class HealthCheckServiceImpl implements HealthCheckService {
 	 * @return Retorna as urls que foram chamadas no arquivo de log.
 	 * @throws IOException
 	 */
-	public List<String> getRequestTo() throws IOException{
+	public List<String> getRequestTo() throws IOException {
 		HealthCheckServiceImpl im = new HealthCheckServiceImpl();
 		URL url = im.getFile();
 		File file = new File(url.getPath());
@@ -112,12 +121,12 @@ public class HealthCheckServiceImpl implements HealthCheckService {
 		}
 		return requestToList;
 	}
-	
+
 	/**
 	 * @return Retorna os HttpStatus que foram gravados no arquivo de log.
 	 * @throws IOException
 	 */
-	public List<String> getHttpStatus() throws IOException{
+	public List<String> getHttpStatus() throws IOException {
 		HealthCheckServiceImpl im = new HealthCheckServiceImpl();
 		URL url = im.getFile();
 		File file = new File(url.getPath());

@@ -11,7 +11,6 @@ public class ResponseHealthCheck {
 	}
 
 	public ResponseHealthCheck() {
-		// TODO Auto-generated constructor stub
 	}
 
 	private List<WebhooksURL> webhooksURLList;
@@ -44,5 +43,13 @@ public class ResponseHealthCheck {
 	 */
 	public void setStatusURLList(List<StatusURL> statusURLList) {
 		this.statusURLList = statusURLList;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "[webhooksURLList=" + webhooksURLList + ", statusURLList=" + statusURLList + "]";
 	}
 }

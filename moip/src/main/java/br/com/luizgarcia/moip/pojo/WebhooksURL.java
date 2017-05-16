@@ -1,10 +1,12 @@
 package br.com.luizgarcia.moip.pojo;
 
+import java.util.Comparator;
+
 /**
  * @author luizgarcia
  * Classe que representa o objeto com as url acionadas e a quantidade que foram acionadas.
  */
-public class WebhooksURL {
+public class WebhooksURL implements Comparator<WebhooksURL>{
 
 	
 
@@ -93,6 +95,12 @@ public class WebhooksURL {
 	@Override
 	public String toString() {
 		return "WebhooksURL [requestUrl=" + requestUrl + ", qtdRequestUrl=" + qtdRequestUrl + "]";
+	}
+
+	@Override
+	public int compare(WebhooksURL o1, WebhooksURL o2) {
+		return (o1.getQtdRequestUrl() > o2.getQtdRequestUrl()) ? -1
+                : (o1.getQtdRequestUrl() < o2.getQtdRequestUrl()) ? 1 : 0;
 	}
 	
 	

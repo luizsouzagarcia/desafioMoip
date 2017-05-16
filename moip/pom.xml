@@ -1,20 +1,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>br.com.luizgarcia</groupId>
-  <artifactId>moip</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+	<groupId>br.com.luizgarcia</groupId>
+	<artifactId>moip</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
-  	<name>moip</name>
+	<name>moip</name>
 	<description>Desafio para vaga de desenvolvedor no Moip</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.1.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
@@ -44,6 +44,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.0</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
@@ -52,22 +59,22 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-		      <groupId>com.spotify</groupId>
-		      <artifactId>docker-maven-plugin</artifactId>
-		      <version>0.4.13</version>
-		      <configuration>
-		        <imageName>desafio-moip</imageName>
-		        <baseImage>openjdk</baseImage>
-		        <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
-		        <resources>
-		           <resource>
-		             <targetPath>/</targetPath>
-		             <directory>${project.build.directory}</directory>
-		             <include>${project.build.finalName}.jar</include>
-		           </resource>
-		        </resources>
-		      </configuration>
-		    </plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.4.13</version>
+				<configuration>
+					<imageName>desafio-moip</imageName>
+					<baseImage>openjdk</baseImage>
+					<entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>

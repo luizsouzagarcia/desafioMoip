@@ -1,8 +1,17 @@
 angular.module('hcApp', [])
-.controller('AppController', function($scope, $http) {
-    $http.get('http://rest-service.guides.spring.io/greeting').
-        then(function(response) {
-            $scope.greeting = response.data;
-        });
-});
-
+	.controller('HealthCheckController', function($scope, $http) {
+		var vm = this;
+	    vm.mydata = [];
+	    $scope.quantity = 3;
+		$scope.showData = function() {
+			$http({
+				method : 'GET',
+				url : '/healthcheck/'
+			}).then(function(response) {
+				//var json = JSON.parse(response);
+				console.log(response);
+				vm.mydata = response;
+			});
+		}
+		
+	});
